@@ -1,0 +1,40 @@
+// Analyze the documentation comments to find missing @param tags
+const documentation = `
+This contract contains various functions.
+`;
+
+const missingParamTags = [];
+
+for (const functionName in functionParamCounts) {
+    if (functionParamCounts.hasOwnProperty(functionName)) {
+        const paramCount = functionParamCounts[functionName];
+        const expectedParamTags = Array.from({ length: paramCount }, (_, index) => `param${index + 1}`);
+        const regex = new RegExp(`@param (param\\d+)`, 'g');
+        const paramTags = documentation.match(regex);
+
+        if (paramTags) {
+            const existingParamTags = paramTags.map(tag => tag.substring(7));
+            const missingTags = expectedParamTags.filter(tag => !existingParamTags.includes(tag));
+            missingParamTags.push({ function: functionName, missingTags });
+        }
+    }
+}
+
+console.log('Missing @param tags:');
+console.log(missingParamTags);
+Run the Script:
+
+Run the script using Node.js:
+
+bash
+Copy code
+node findMissingParamTags.js
+This script parses the provided Solidity code, extracts the function parameter counts, and then analyzes the documentation comments to identify missing @param tags. It logs the missing tags along with the function names to the console.
+
+Please note that the approach provided is a simplified example and assumes certain patterns in the Solidity documentation. Real-world contracts might have more complex structures and edge cases that need to be considered when performing this analysis. Additionally, keep in mind that the tooling and libraries in the Solidity ecosystem can evolve, so always refer to the latest documentation and resources for accurate and up-to-date information.
+
+
+
+
+
+run your script and i wil tell you what to do next 
