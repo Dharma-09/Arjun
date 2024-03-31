@@ -2,7 +2,7 @@
 
 
 ## Medium Issues
-
+# this is sample report which is use for general purpose
 
 | |Issue|Instances|
 |-|:-|:-:|
