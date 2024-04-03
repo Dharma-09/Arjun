@@ -1,1 +1,2 @@
+/contracts.sol
 /test.sol
