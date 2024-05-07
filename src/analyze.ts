@@ -81,7 +81,7 @@ const analyze = (files: InputType, issues: Issue[], githubLink?: string): string
       }
 
       if (includeGasSavingsColumn) {
-        summaryTable += `| [${issue.type}-${c}](#${issue.type}-${c}) | ${issue.title} | ${instances.length} | ${issue.type === 'GAS' ? totalGasSavings : "-"} |\n`;
+        summaryTable += `| [${issue.type}-${c}](#${issue.type}-${c}) | ${issue.title} | ${instances.length} |\n`; // ${issue.type === 'GAS' ? totalGasSavings : "-"}
       } else {
         summaryTable += `| [${issue.type}-${c}](#${issue.type}-${c}) | ${issue.title} | ${instances.length} | - |\n`;
       }
