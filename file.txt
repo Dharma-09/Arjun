@@ -1,27 +1,4 @@
-// Analyze the documentation comments to find missing @param tags
-const documentation = `
-This contract contains various functions.
-`;
 
-const missingParamTags = [];
-
-for (const functionName in functionParamCounts) {
-    if (functionParamCounts.hasOwnProperty(functionName)) {
-        const paramCount = functionParamCounts[functionName];
-        const expectedParamTags = Array.from({ length: paramCount }, (_, index) => `param${index + 1}`);
-        const regex = new RegExp(`@param (param\\d+)`, 'g');
-        const paramTags = documentation.match(regex);
-
-        if (paramTags) {
-            const existingParamTags = paramTags.map(tag => tag.substring(7));
-            const missingTags = expectedParamTags.filter(tag => !existingParamTags.includes(tag));
-            missingParamTags.push({ function: functionName, missingTags });
-        }
-    }
-}
-
-console.log('Missing @param tags:');
-console.log(missingParamTags);
 Run the Script:
 
 Run the script using Node.js:
